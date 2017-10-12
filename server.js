@@ -21,9 +21,10 @@ connection.on('error', () => {
 
 // Inject all middleware
 app.use(bodyParser.json())
+app.use(express.static(`${__dirname}/client/build`))
 
 app.get('/', (req, res) => {
-    res.send("Hello World from Express!")
+    res.sendFile(`${__dirname}/client/build/index.html`)
 })
 
 // Set the app to listen on a specific port
